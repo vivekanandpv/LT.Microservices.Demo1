@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LT.Microservices.Demo1.Providers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,16 @@ namespace LT.Microservices.Demo1.Controllers
     [ApiController]
     public class SampleController : ControllerBase
     {
+        private readonly GreetingProvider _provider;
+
+        public SampleController(GreetingProvider provider)
+        {
+            _provider = provider;
+        }
+
         public IActionResult Get()
         {
-            return Ok(new { Message = "Good afternoon!" });
+            return Ok(new { Message = _provider.GetGreeting() });
         }
     }
 }

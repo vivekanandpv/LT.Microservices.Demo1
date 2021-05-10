@@ -1,3 +1,4 @@
+using LT.Microservices.Demo1.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +18,7 @@ namespace LT.Microservices.Demo1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<GreetingProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
