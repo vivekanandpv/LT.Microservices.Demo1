@@ -18,8 +18,8 @@ namespace LT.Microservices.Demo1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<GreetingProvider>();
-            services.AddSingleton<MessageProvider>();
+            services.AddTransient<GreetingProvider>();
+            services.AddTransient<MessageProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

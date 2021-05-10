@@ -14,7 +14,7 @@ namespace LT.Microservices.Demo1.Controllers
     {
         private readonly GreetingProvider _provider;
 
-        public SampleController(GreetingProvider provider)
+        public SampleController(GreetingProvider provider, MessageProvider messageProvider)
         {
             _provider = provider;
         }

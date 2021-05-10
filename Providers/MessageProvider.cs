@@ -7,6 +7,10 @@ namespace LT.Microservices.Demo1.Providers
 {
     public class MessageProvider
     {
+        public MessageProvider()
+        {
+            Console.WriteLine("MessageProvider created");
+        }
         public string GetMessage()
         {
             return "Good afternoon!";
