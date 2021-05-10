@@ -12,16 +12,16 @@ namespace LT.Microservices.Demo1.Controllers
     [ApiController]
     public class SampleController : ControllerBase
     {
-        private readonly GreetingProvider _provider;
+        private readonly IEnumerable<IProvider<string>> _providers;
 
-        public SampleController(GreetingProvider provider, MessageProvider messageProvider)
+        public SampleController(IEnumerable<IProvider<string>> providers)
         {
-            _provider = provider;
+            _providers = providers;
         }
 
         public IActionResult Get()
         {
-            return Ok(new { Message = _provider.GetGreeting() });
+            return Ok(new { Message = _providers.ElementAt(0).Get() });
         }
     }
 }

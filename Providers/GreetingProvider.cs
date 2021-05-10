@@ -5,18 +5,11 @@ using System.Threading.Tasks;
 
 namespace LT.Microservices.Demo1.Providers
 {
-    public class GreetingProvider
+    public class GreetingProvider : IProvider<string>
     {
-        private readonly MessageProvider _messageProvider;
-
-        public GreetingProvider(MessageProvider messageProvider)
+        public string Get()
         {
-            _messageProvider = messageProvider;
-        }
-
-        public string GetGreeting()
-        {
-            return _messageProvider.GetMessage();
+            return "GreetingProvider";
         }
     }
 }

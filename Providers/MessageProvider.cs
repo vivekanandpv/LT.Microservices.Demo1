@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 
 namespace LT.Microservices.Demo1.Providers
 {
-    public class MessageProvider
+    public class MessageProvider: IProvider<string>
     {
-        public MessageProvider()
+        public string Get()
         {
-            Console.WriteLine("MessageProvider created");
-        }
-        public string GetMessage()
-        {
-            return "Good afternoon!";
+            return "MessageProvider";
         }
     }
 }
