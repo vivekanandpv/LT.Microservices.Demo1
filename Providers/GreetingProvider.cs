@@ -7,9 +7,16 @@ namespace LT.Microservices.Demo1.Providers
 {
     public class GreetingProvider
     {
+        private readonly MessageProvider _messageProvider;
+
+        public GreetingProvider(MessageProvider messageProvider)
+        {
+            _messageProvider = messageProvider;
+        }
+
         public string GetGreeting()
         {
-            return "Good afternoon!";
+            return _messageProvider.GetMessage();
         }
     }
 }
