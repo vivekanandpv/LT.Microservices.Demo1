@@ -3,6 +3,7 @@ using LT.Microservices.Demo1.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +16,17 @@ namespace LT.Microservices.Demo1.Controllers
     public class SampleController : ControllerBase
     {
         private readonly IEnumerable<IProvider<string>> _providers;
-        private readonly IConfiguration configuration;
+        private readonly PersonViewModel _viewModel;
 
-        public SampleController(IEnumerable<IProvider<string>> providers, IConfiguration configuration)
+        public SampleController(IEnumerable<IProvider<string>> providers, IOptions<PersonViewModel> options)
         {
             _providers = providers;
-            this.configuration = configuration;
+            this._viewModel = options.Value;
         }
 
         public IActionResult Get()
         {
-            var person = configuration.GetSection("Person").Get<PersonViewModel>();
-            return Ok(new { Message = person.FirstName, City = person.Address.City });
+            return Ok(new { Message = _viewModel.FirstName, City = _viewModel.Address.City });
         }
     }
 }

@@ -7,6 +7,11 @@ namespace LT.Microservices.Demo1.ViewModels
 {
     public class PersonViewModel
     {
+        public PersonViewModel()
+        {
+            Console.WriteLine("PersonViewModel");
+        }
+
         public string FirstName { get; set; }
         public AddressViewModel Address { get; set; }
     }

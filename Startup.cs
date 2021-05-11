@@ -1,4 +1,5 @@
 using LT.Microservices.Demo1.Providers;
+using LT.Microservices.Demo1.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +32,8 @@ namespace LT.Microservices.Demo1
             
             services.AddTransient<IProvider<string>, MessageProvider>();
             services.AddTransient<IProvider<string>, GreetingProvider>();
+
+            services.Configure<PersonViewModel>(_configuration.GetSection("Person"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
